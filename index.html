@@ -1,0 +1,25 @@
+<html>
+<head>
+	<link rel="stylesheet" href="style.css" />
+<script src="abv2shts.js">
+
+</script>
+</head>
+<body>
+<div>
+  For a given volume and ABV of alcohol, this tool calculates how many 50 ml and 1.5 oz shots of 80 proof liquor has the same amount of alcohol.
+</div>
+
+<div id="input">
+Enter volume <input id="vol" type="text" />
+<select id="inUnits">
+  <option value="oz">Oz</option>
+  <option value="ml">Ml</option>
+</select>
+
+Enter ABV <input id="abv" type="text" />%  
+
+<input type="button" value="Calculate" onclick="calculateShots()"/> Shots
+</div>
+<div id="output"></div>
+<body>
