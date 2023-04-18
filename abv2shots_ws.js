@@ -48,6 +48,7 @@ app.post('/getshots', (req, res, next) => {
 	const ozShot = .6;
 	const mlVolume = inUnits === "ml" ? inVolume : inVolume * ozToMl;
 	const ozVolume = inUnits === "oz" ? inVolume : inVolume / ozToMl;
+	const mlAlcohol = abv * mlVolume;
     const ozAlcohol = abv * ozVolume;
     const ozShots = ozAlcohol / ozShot;
     const mlShots = mlAlcohol / mlShot;
