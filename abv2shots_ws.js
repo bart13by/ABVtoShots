@@ -37,11 +37,11 @@ app.post('/getshots', (req, res, next) => {
 		error.status = 400;
 		return next(error);	
 	}
-	if (inUnits != 'ml' || inUnits != 'oz'){
-	const error = new Error('strVolUnits must be ml or oz');
-		error.status = 400;
-		return next(error);		
-	}
+	// if (inUnits != 'ml' || inUnits != 'oz'){
+	// const error = new Error('strVolUnits must be ml or oz');
+	// 	error.status = 400;
+	// 	return next(error);		
+	// }
 	const abv = data.pctABV / 100;
 	const ozToMl = 29.57;
 	const mlShot = 20;
