@@ -44,21 +44,21 @@ app.post('/getshots', (req, res, next) => {
 	}
 	const abv = data.pctABV / 100;
 	const ozToMl = 29.57;
-	const mlShot = 20;
-	const ozShot = .6;
+	const mlShotVolume = 20;
+	const ozShotVolume = .6;
 	const mlVolume = inUnits === "ml" ? inVolume : inVolume * ozToMl;
 	const ozVolume = inUnits === "oz" ? inVolume : inVolume / ozToMl;
 	const mlAlcohol = abv * mlVolume;
     const ozAlcohol = abv * ozVolume;
-    const ozShots = ozAlcohol / ozShot;
-    const mlShots = mlAlcohol / mlShot;
+    const ozShots = ozAlcohol / ozShotVolume;
+    const mlShots = mlAlcohol / mlShotVolume;
 	const ret_data = {
-		'mlVolume' : mlVolume,
-		'ozVolume' : ozVolume,
-		'mlAlcohol': mlAlcohol,
-	    'ozAlcohol': ozAlcohol,
-	    'numOzShots'  : ozShot,
-	    'numMlShots'  : mlShots
+		'mlVolume' : mlVolume.toLocaleString('en-US', {maximumFractionDigits: 2 }),
+		'ozVolume' : ozVolume.toLocaleString('en-US', {maximumFractionDigits: 2 }),
+		'mlAlcohol': mlAlcohol.toLocaleString('en-US', {maximumFractionDigits: 2 }),
+	    'ozAlcohol': ozAlcohol.toLocaleString('en-US', {maximumFractionDigits: 2 }),
+	    'numOzShots'  : ozShots.toLocaleString('en-US', {maximumFractionDigits: 2 }),
+	    'numMlShots'  : mlShots.toLocaleString('en-US', {maximumFractionDigits: 2 })
 	}
     console.log(JSON.stringify(ret_data));	 
 	 
