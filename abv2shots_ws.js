@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/getshots', (req, res, next) => {
+	console.log(JSON.stringify(req.body);
 	if (!req.body.data) {
 	    // if the request doesn't contain the required data, throw an error
 	    const error = new Error('Data is missing from the request');
