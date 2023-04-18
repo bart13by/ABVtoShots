@@ -1,11 +1,15 @@
 function calculateShots()
 {
-  let ozToMl = 29.57;
-  let mlShot = 20;
-  let ozShot = .6;
   let inUnits = document.getElementById("inUnits").value;
   let inVolume = document.getElementById("vol").value;
   let abv = document.getElementById("abv").value / 100;
+  if (inVolume == 0 || abv == 0) 
+  	{ 
+  		return; 
+	}
+  let ozToMl = 29.57;
+  let mlShot = 20;
+  let ozShot = .6;
   let mlVolume = inUnits === "ml" ? inVolume : inVolume * ozToMl;
   let ozVolume = inUnits === "oz" ? inVolume : inVolume / ozToMl;
   let mlAlcohol = abv * mlVolume;

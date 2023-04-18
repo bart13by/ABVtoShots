@@ -1,3 +1,7 @@
 #input { margin-top: 2ex;
 margin-left: 3px;
 margin-bottom: 2ex;}
+
+#output {
+	background-color: lightgray;
+}

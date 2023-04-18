@@ -11,13 +11,13 @@
 </div>
 
 <div id="input">
-Enter volume <input id="vol" type="text" />
-<select id="inUnits">
+Enter volume <input id="vol" type="text" onchange="calculateShots()" />
+<select id="inUnits" onchange="calculateShots()">
   <option value="oz">Oz</option>
   <option value="ml">Ml</option>
 </select>
 
-Enter ABV <input id="abv" type="text" />%  
+Enter ABV <input id="abv" type="text" onchange="calculateShots()" />%  
 
 <input type="button" value="Calculate" onclick="calculateShots()"/> Shots
 </div>
