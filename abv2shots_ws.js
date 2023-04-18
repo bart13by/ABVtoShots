@@ -37,18 +37,20 @@ app.post('/getshots', (req, res, next) => {
 		error.status = 400;
 		return next(error);	
 	}
-	// if (inUnits != 'ml' || inUnits != 'oz'){
-	// const error = new Error('strVolUnits must be ml or oz');
-	// 	error.status = 400;
-	// 	return next(error);		
-	// }
+	if (!['ml','oz'].includes(inUnits)){
+		const error = new Error(`strVolUnits must be ml or oz, not ${inUnits}`);
+		error.status = 400;
+		return next(error);		
+	}
 	const abv = data.pctABV / 100;
 	const ozToMl = 29.57;
 	const mlShot = 20;
 	const ozShot = .6;
+	const mlVolume = inUnits === "ml" ? inVolume : inVolume * ozToMl;
+	const ozVolume = inUnits === "oz" ? inVolume : inVolume / ozToMl;
 	const ret_data = {
-		'mlVolume' : inUnits === "ml" ? inVolume : inVolume * ozToMl,
-		'ozVolume' : inUnits === "oz" ? inVolume : inVolume / ozToMl,
+		'mlVolume' : mlVolume,
+		'ozVolume' : ozVolume,
 		'mlAlcohol' : abv * mlVolume,
 	    'ozAlcohol' : abv * ozVolume,
 	    'ozShots' : ozAlcohol / ozShot,
@@ -61,7 +63,7 @@ app.post('/getshots', (req, res, next) => {
   console.log(JSON.stringify(req.body))
   // return a status and echo back the req.body
   res.setHeader('Content-Type', 'application/json')
-  res.send({status: 'success',received: req.body})
+  res.send({status: 'success', data: ret_data})
   
 });
 
